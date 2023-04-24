@@ -22,6 +22,6 @@ if __name__ == "__main__":
                     data = conn.recv(1024)
                     if not data:
                         break
-                    conn.sendall(data)
+                    #conn.sendall(data)
                     print(f"Received {len(data)} bytes of data from: {addr}")
                 print('Connection closed by client')

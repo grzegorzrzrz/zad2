@@ -28,6 +28,6 @@ if __name__ == "__main__":
             data = generate_data(64)
             s.sendall(data)
             # s.sendto(data, (server_name, server_port))
-            s.recv(64)
+            # s.recv(64)
             print(f"Sending {len(data)} bytes of data to: ('{server_name}',{server_port})")
             sleep(0.5)
