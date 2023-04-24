@@ -25,5 +25,6 @@ if __name__ == "__main__":
         for i in range(5):
             data = generate_data(64)
             print(f"Sending {len(data)} bytes of data...   ")
-            s.send(data)
+            number = s.send(data)
+            print(f"Sent {number} bytes of data...")
             sleep(0.5)
