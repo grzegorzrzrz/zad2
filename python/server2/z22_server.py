@@ -18,10 +18,31 @@ if __name__ == "__main__":
 
         full_mess = ""
         while True:
-            data = conn.recv(60)
+            data = conn.recv(63)
             if not data:
-                print(f"Full mess: {full_mess}")
-                print("\n==============================\n")
+                break
             else:
                 print(f"Mess: {data.decode('utf-8')} from {addr}")
                 full_mess += data.decode('utf-8')
+
+        print(f"Full mess: {full_mess}")
+
+        s.close()
+
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        s.bind((name, port))
+        s.listen(5)
+
+        while True:
+            conn, addr = s.accept()
+            with conn:
+                full_mess = ""
+                while True:
+                    data = conn.recv(60)
+                    if not data:
+                        break
+                    else:
+                        print(f"Mess: {data.decode('utf-8')} from {addr}")
+                        full_mess += data.decode('utf-8')
+                print(f"Full mess: {full_mess}\n")
+                print('Connection closed by client\n')

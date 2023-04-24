@@ -27,9 +27,3 @@ if __name__ == "__main__":
             print(f"Sending {len(data)} bytes of data...   ")
             s.sendall(data)
             sleep(0.5)
-
-        for i in range(5):
-            data = generate_data(64)
-            print(f"Sending {len(data)} bytes of data...   ")
-            s.send(data)
-            sleep(0.5)
