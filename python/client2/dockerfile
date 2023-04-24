@@ -1,5 +1,3 @@
 FROM python:3
 ADD z22_client.py /
-ADD z22_client1.py /
 ENTRYPOINT ["python", "./z22_client.py"]
-CMD ["python", "./z22_client1.py"]
