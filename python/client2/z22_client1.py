@@ -9,6 +9,7 @@ def generate_data(size):
     return str.encode(rand_str)
 
 if __name__ == "__main__":
+    print("UZYWAJAC send()\n")
     parser = argparse.ArgumentParser()
     parser.add_argument("server_name", help="Server's name")
     parser.add_argument("server_port", help="Server's port")
