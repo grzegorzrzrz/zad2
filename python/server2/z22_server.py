@@ -18,13 +18,10 @@ if __name__ == "__main__":
 
         full_mess = ""
         while True:
-            data = conn.recv(63)
+            data = conn.recv(60)
             if not data:
-                break
+                print(f"Full mess: {full_mess}")
+                print("\n==============================\n")
             else:
                 print(f"Mess: {data.decode('utf-8')} from {addr}")
                 full_mess += data.decode('utf-8')
-
-        print(f"Full mess: {full_mess}")
-
-        s.close()
