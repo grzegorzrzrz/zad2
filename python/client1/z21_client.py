@@ -25,9 +25,7 @@ if __name__ == "__main__":
         s.connect((server_name, server_port))
 
         for i in range(10):
-            data = generate_data(64)
+            data = generate_data(20)
             s.sendall(data)
-            # s.sendto(data, (server_name, server_port))
-            # s.recv(64)
             print(f"Sending {len(data)} bytes of data to: ('{server_name}',{server_port})")
-            sleep(0.5)
+            sleep(1)
