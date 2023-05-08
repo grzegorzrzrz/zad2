@@ -24,7 +24,7 @@ if __name__ == "__main__":
 
         s.connect((server_name, server_port))
 
-        for i in range(5):
+        for i in range(10):
             data = generate_data(64)
             s.sendall(data)
             # s.sendto(data, (server_name, server_port))

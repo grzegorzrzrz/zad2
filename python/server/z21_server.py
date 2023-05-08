@@ -1,6 +1,17 @@
 import socket
 import argparse
-from time import sleep
+import threading
+
+def handle_client(conn, addr):
+    while True:
+        data = conn.recv(1024)
+        if not data:
+            break
+        #conn.sendall(data)
+        print(f"Received {len(data)} bytes of data from: {addr}")
+    print('Connection closed by client')
+    conn.close()
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -17,11 +28,6 @@ if __name__ == "__main__":
 
         while True:
             conn, addr = s.accept()
-            with conn:
-                while True:
-                    data = conn.recv(1024)
-                    if not data:
-                        break
-                    #conn.sendall(data)
-                    print(f"Received {len(data)} bytes of data from: {addr}")
-                print('Connection closed by client')
+            thread = threading.Thread(target=handle_client, args=(conn, addr))
+            thread.start()
+            print(f"Active connections: {threading.active_count() - 1}")
