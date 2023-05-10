@@ -98,7 +98,7 @@ int main(int argc, char **argv)
       {
         printf("Stworzono proces potomny o PID: %d\n", pid);
         close(polaczenie);
-        wait(NULL);
+        // wait(NULL);
       }
     }
   }
