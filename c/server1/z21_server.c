@@ -1,10 +1,10 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
 #include <arpa/inet.h>
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <sys/wait.h>
 
 int main(int argc, char **argv)
 {
@@ -72,6 +72,7 @@ int main(int argc, char **argv)
       else if (pid == 0)
       {
         printf("Stworzono proces potomny\n");
+        close(gniazdko);
         while (1)
         {
           int wiadomosc_otrzymana = (int)recv(polaczenie, bufor, 64, 0);
@@ -91,12 +92,14 @@ int main(int argc, char **argv)
           }
         }
         close(polaczenie);
+        printf("Proces potomny kończy działanie\n");
+        exit(0);
       }
       else
       {
+        printf("Stworzono proces potomny o PID: %d\n", pid);
         close(polaczenie);
         wait(NULL);
-        printf("Zakończono proces potomny\n");
       }
     }
   }
