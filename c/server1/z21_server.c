@@ -71,7 +71,6 @@ int main(int argc, char **argv)
       }
       else if (pid == 0)
       {
-        printf("Stworzono proces potomny\n");
         close(gniazdko);
         while (1)
         {
