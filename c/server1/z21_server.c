@@ -91,14 +91,14 @@ int main(int argc, char **argv)
           }
         }
         close(polaczenie);
-        printf("Proces potomny kończy działanie\n");
+        printf("Proces potomny kończy działanie\n\n");
         exit(0);
       }
       else
       {
         printf("Stworzono proces potomny o PID: %d\n", pid);
         close(polaczenie);
-        // wait(NULL);
+        wait(NULL);
       }
     }
   }
