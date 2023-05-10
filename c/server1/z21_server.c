@@ -71,7 +71,7 @@ int main(int argc, char **argv)
       }
       else if (pid == 0)
       {
-        while (1)
+        printf("Stworzono proces potomny\n") while (1)
         {
           int wiadomosc_otrzymana = (int)recv(polaczenie, bufor, 64, 0);
 
@@ -95,6 +95,7 @@ int main(int argc, char **argv)
       {
         close(polaczenie);
         wait(NULL);
+        printf("Zakończono proces potomny\n")
       }
     }
   }
