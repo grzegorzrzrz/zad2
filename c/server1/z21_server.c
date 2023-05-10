@@ -71,7 +71,6 @@ int main(int argc, char **argv)
       }
       else if (pid == 0)
       {
-        close(gniazdko);
         while (1)
         {
           int wiadomosc_otrzymana = (int)recv(polaczenie, bufor, 64, 0);
